@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #999999;
+  font-family: "Poppins", sans-serif;
+  &::-webkit-scrollbar {
+    width: 8px; /* Chiều rộng của thanh cuộn */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #404040; /* Màu của nút cuộn */
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Màu của phần nền thanh cuộn */
+  }
+}
