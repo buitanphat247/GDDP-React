@@ -4,6 +4,7 @@ import Button from "../components/button/Button";
 import { auth } from "../store/firebaseconfig";
 import { signOut } from "@firebase/auth";
 import Swal from "sweetalert2";
+import { NavLink, useNavigate } from "react-router-dom";
 const sideBar_list = [
   {
     name: "home",
@@ -39,6 +40,7 @@ const sideBar_list = [
   },
 ];
 const SideBar = () => {
+  const navigate = useNavigate();
   const handleLogout = () => {
     Swal.fire({
       title: "Đăng xuất",
@@ -51,6 +53,7 @@ const SideBar = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Đăng xuất!", "Đăng xuất thành công", "success");
+        navigate("/");
         try {
           signOut(auth);
         } catch (error) {
@@ -61,15 +64,13 @@ const SideBar = () => {
   };
   const { isLogin } = useSelector((state) => state.Login);
   return (
-    <div className="border-r h-[100vh]  border-black col-span-1 bg-green-200 sticky top-0 bottom-0">
+    <div className="border-r h-[100vh]  border-black col-span-1 bg-slate-200 sticky top-0 bottom-0">
       {/* logo */}
       <div className="flex justify-between items-center px-3">
-        <div className="w-[180px]">
-          <img
-            srcSet="./logo-name.png"
-            className="w-full h-full object-cover"
-            alt=""
-          />
+        <div className="text-4xl uppercase font-bold ">
+          <h1 className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500">
+            LinuStar
+          </h1>
         </div>
         <div className="text-2xl cursor-pointer">
           <i className="fa-solid fa-bars"></i>
@@ -82,12 +83,19 @@ const SideBar = () => {
       {/* items */}
 
       <div className="grid gap-y-3 mt-2">
-        <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-blue-400 "
+              : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
+          }
+        >
           <span className="w-[50px] h-full flex items-center justify-center">
             {sideBar_list[0].icon}
           </span>
           {sideBar_list[0].name}
-        </div>
+        </NavLink>
         <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
           <span className="w-[50px] h-full flex items-center justify-center">
             {sideBar_list[1].icon}
@@ -114,18 +122,34 @@ const SideBar = () => {
 
         {isLogin === true ? (
           <>
-            <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+            <NavLink
+              to="/manage/profile"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-blue-400 "
+                  : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
+              }
+            >
               <span className="w-[50px] h-full flex items-center justify-center">
                 {sideBar_list[4].icon}
               </span>
               {sideBar_list[4].name}
-            </div>
-            <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+            </NavLink>
+
+            <NavLink
+              to="/manage/posts"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-blue-400 "
+                  : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
+              }
+            >
               <span className="w-[50px] h-full flex items-center justify-center">
                 {sideBar_list[5].icon}
               </span>
               {sideBar_list[5].name}
-            </div>
+            </NavLink>
+
             <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
               <span className="w-[50px] h-full flex items-center justify-center">
                 {sideBar_list[6].icon}
@@ -170,12 +194,15 @@ const SideBar = () => {
       </div>
 
       {isLogin && (
-        <div className=" bg-blue-400 w-full absolute bottom-0 text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+        <NavLink
+          to="/manage/add-posts"
+          className=" bg-blue-400 w-full absolute bottom-0 text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer"
+        >
           <span className="w-[50px] h-full flex items-center justify-center">
             <i className="fa-regular fa-pen-to-square"></i>
           </span>
           write news posts
-        </div>
+        </NavLink>
       )}
     </div>
   );

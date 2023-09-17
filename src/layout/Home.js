@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const { isLogin } = useSelector((state) => state.Login);
   return (
-    <div className="border-black">
-      <div className="py-5 px-10 gap-x-10 flex justify-between pb-10">
+    <div className="border-black bg-slate-400">
+      <div className="px-10 gap-x-10 flex justify-between py-5  mb-5">
         <input
           type="text"
           placeholder="Search your posts..."

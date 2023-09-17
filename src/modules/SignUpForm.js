@@ -18,13 +18,18 @@ const SignUpForm = () => {
       .then(async (userCredential) => {
         const { uid } = userCredential.user;
         await addDoc(collection(db, "users"), {
-          firstname: data.firstname,
-          lastname: data.lastname,
-          username: data.username,
+          firstname: data.firstname.toLowerCase().trimEnd(),
+          lastname: data.lastname.toLowerCase().trimEnd(),
+          username: data.username.toLowerCase().trimEnd(),
           email: data.email,
           password: data.password,
           createAt: formattedDate,
           userId: uid,
+          role: "user",
+          fullname:
+            data.firstname.toLowerCase().trimEnd() +
+            " " +
+            data.lastname.toLowerCase().trimEnd(),
         });
         await updateProfile(auth.currentUser, {
           displayName: data.username,

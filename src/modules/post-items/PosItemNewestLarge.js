@@ -3,7 +3,7 @@ import Button from "../../components/button/Button";
 
 const PosItemNewestLarge = () => {
   return (
-    <div className="col-span-2 bg-green-200 p-2 rounded-md cursor-pointer relative group">
+    <div className="col-span-2 bg-green-200 p-2 rounded-md cursor-pointer relative group h-auto border-2 flex flex-col">
       <div className="rounded-md relative w-full ">
         <img
           className="w-full h-full rounded-md"
@@ -30,7 +30,9 @@ const PosItemNewestLarge = () => {
           alias rerum cum? Eligendi totam quibusdam eum voluptate, maxime beatae
           hic nam, voluptates blanditiis, architecto animi?
         </p>
-        <h1 className="flex justify-between font-bold">
+      </div>
+      <div className="flex-1 flex items-end">
+        <h1 className="flex justify-between w-full font-bold">
           <span>14/9/2023</span>
           <span>Bùi Tấn Phát</span>
         </h1>
