@@ -3,7 +3,7 @@ import Button from "../../components/button/Button";
 
 const PostItemNewestMini = () => {
   return (
-    <div className="flex gap-x-5 bg-green-200 p-2 rounded-md cursor-pointer relative group">
+    <div className="flex gap-x-5 bg-white shadow-xl shadow-slate-400 p-2 rounded-md cursor-pointer relative group">
       <div className="rounded-md relative w-[300px]">
         <img
           className="w-full h-full rounded-md"

@@ -12,6 +12,7 @@ const Input = ({ control, placeholder, type, name, ...props }) => {
       placeholder={placeholder}
       type={type}
       id={name}
+      autoFocus={false}
       name={name}
       className="w-full h-[50px] px-3 rounded-md outline-none focus:border-2 focus:border-blue-800 border-2 border-transparent"
       {...props}

@@ -3,7 +3,7 @@ import Button from "../../components/button/Button";
 
 const PostItemFearture = () => {
   return (
-    <div className="bg-green-200 p-2 rounded-md cursor-pointer relative group">
+    <div className="bg-white shadow-xl shadow-slate-400 p-2 rounded-md cursor-pointer relative group">
       <div className="rounded-md relative w-full h-[250px]">
         <img
           className="w-full h-full rounded-md"

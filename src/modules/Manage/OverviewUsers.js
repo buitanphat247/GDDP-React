@@ -38,6 +38,7 @@ const OverviewUsers = () => {
         </div>
         <div>
           <input
+            autoFocus={false}
             onChange={handleChange}
             type="text"
             className="w-full block h-[50px] px-5 rounded-md outline-none"

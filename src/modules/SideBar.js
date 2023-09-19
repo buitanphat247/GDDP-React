@@ -68,9 +68,12 @@ const SideBar = () => {
       {/* logo */}
       <div className="flex justify-between items-center px-3">
         <div className="text-4xl uppercase font-bold ">
-          <h1 className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500">
+          <NavLink
+            to="/"
+            className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500"
+          >
             LinuStar
-          </h1>
+          </NavLink>
         </div>
         <div className="text-2xl cursor-pointer">
           <i className="fa-solid fa-bars"></i>
@@ -80,14 +83,14 @@ const SideBar = () => {
       <div className="px-3">
         <div className=" border border-gray-500 w-full h-[1px]"></div>
       </div>
-      {/* items */}
 
-      <div className="grid gap-y-3 mt-2">
+      {/* items */}
+      <div className="grid gap-y-3 mt-2 px-3">
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-blue-400 "
+              ? "text-lg text-blue-800 font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg"
               : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
           }
         >
@@ -96,18 +99,32 @@ const SideBar = () => {
           </span>
           {sideBar_list[0].name}
         </NavLink>
-        <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+        <NavLink
+          to="/search-page-content"
+          className={({ isActive }) =>
+            isActive
+              ? "text-lg text-blue-800 font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg"
+              : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
+          }
+        >
           <span className="w-[50px] h-full flex items-center justify-center">
             {sideBar_list[1].icon}
           </span>
           {sideBar_list[1].name}
-        </div>
-        <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+        </NavLink>
+        <NavLink
+          to="/add-new-friend"
+          className={({ isActive }) =>
+            isActive
+              ? "text-lg text-blue-800 font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg"
+              : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
+          }
+        >
           <span className="w-[50px] h-full flex items-center justify-center">
             {sideBar_list[2].icon}
           </span>
           {sideBar_list[2].name}
-        </div>
+        </NavLink>
         <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
           <span className="w-[50px] h-full flex items-center justify-center">
             {sideBar_list[3].icon}
@@ -116,17 +133,17 @@ const SideBar = () => {
         </div>
 
         {/* line */}
-        <div className="px-3">
-          <div className=" border border-gray-500 w-full h-[1px]"></div>
-        </div>
 
-        {isLogin === true ? (
+        {isLogin === true && (
           <>
+            <div className="px-3">
+              <div className=" border border-gray-500 w-full h-[1px]"></div>
+            </div>
             <NavLink
-              to="/manage/profile"
+              to="profile"
               className={({ isActive }) =>
                 isActive
-                  ? "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-blue-400 "
+                  ? "text-lg text-blue-800 font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg"
                   : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
               }
             >
@@ -135,12 +152,11 @@ const SideBar = () => {
               </span>
               {sideBar_list[4].name}
             </NavLink>
-
             <NavLink
-              to="/manage/posts"
+              to="/manage"
               className={({ isActive }) =>
                 isActive
-                  ? "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-blue-400 "
+                  ? "text-lg font-bold text-blue-800 capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg"
                   : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent"
               }
             >
@@ -149,13 +165,17 @@ const SideBar = () => {
               </span>
               {sideBar_list[5].name}
             </NavLink>
-
-            <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+            <NavLink
+              to="https://www.facebook.com/THPT.VungTau"
+              target="_blank"
+              className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer"
+              rel="noreferrer"
+            >
               <span className="w-[50px] h-full flex items-center justify-center">
                 {sideBar_list[6].icon}
               </span>
               {sideBar_list[6].name}
-            </div>
+            </NavLink>
             {/* handle logout */}
             <div
               onClick={handleLogout}
@@ -167,7 +187,8 @@ const SideBar = () => {
               {sideBar_list[7].name}
             </div>
           </>
-        ) : (
+        )}
+        {isLogin === false && (
           <>
             <Button
               isNavLink={true}

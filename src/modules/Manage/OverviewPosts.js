@@ -22,16 +22,16 @@ const OverviewPosts = () => {
   const [query_post, setQueryPosts] = useState("");
   const handleRemove = (id) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Xác nhận xóa?",
+      text: "Bạn có muốn xóa bài viết này",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Xác nhận",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Bài viết đã được xóa thành công", "success");
         await deleteDoc(doc(db, "posts", id));
       }
     });
@@ -69,6 +69,7 @@ const OverviewPosts = () => {
           </div>
           <div>
             <input
+              autoFocus={false}
               onChange={handleChange}
               type="text"
               className="w-full block h-[50px] px-5 rounded-md outline-none"

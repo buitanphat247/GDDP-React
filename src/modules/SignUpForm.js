@@ -9,6 +9,7 @@ import { addDoc, collection } from "firebase/firestore";
 import useGetDay from "../hooks/useGetDay";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+
 const SignUpForm = () => {
   const navigate = useNavigate();
   const { formattedDate } = useGetDay();
@@ -30,9 +31,13 @@ const SignUpForm = () => {
             data.firstname.toLowerCase().trimEnd() +
             " " +
             data.lastname.toLowerCase().trimEnd(),
+          avatar:
+            "https://st.depositphotos.com/2218212/2938/i/450/depositphotos_29387653-stock-photo-facebook-profile.jpg",
         });
         await updateProfile(auth.currentUser, {
           displayName: data.username,
+          photoURL:
+            "https://st.depositphotos.com/2218212/2938/i/450/depositphotos_29387653-stock-photo-facebook-profile.jpg",
         });
         reset({
           firstname: "",

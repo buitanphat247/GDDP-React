@@ -14,7 +14,9 @@ import { auth, db } from "../../store/firebaseconfig";
 import { useDispatch, useSelector } from "react-redux";
 import { setListCategories } from "../../slice/CategoriesSlice";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 const OverviewCategories = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { list_categories } = useSelector((state) => state.ListCategories);
   const [query_category, setQueryCategory] = useState("");
@@ -28,7 +30,8 @@ const OverviewCategories = () => {
       querySnapshot.forEach((doc) => {
         if (query_category === "") data.push(doc.data());
         else {
-          if (doc.data().category.includes(newQueryCategory)) data.push(doc.data());
+          if (doc.data().category.includes(newQueryCategory))
+            data.push(doc.data());
         }
       });
       dispatch(setListCategories(data));
@@ -36,16 +39,16 @@ const OverviewCategories = () => {
   }, [dispatch, query_category]);
   const handleRemove = (id) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Xác nhận xóa?",
+      text: "Bạn có muốn xóa danh mục này",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Xác nhận",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Danh mục đã được xóa thành công", "success");
         await deleteDoc(doc(db, "categories", id));
       }
     });
@@ -53,6 +56,9 @@ const OverviewCategories = () => {
   const handleChange = debounce((e) => {
     setQueryCategory(e.target.value);
   }, 500);
+  const handleEdit = (id) => {
+    navigate(`/manage/categories/${id}`);
+  };
   return (
     <div className="min-h-[70vh] p-10">
       <div className="h-full rounded-md bg-slate-300 p-10">
@@ -68,6 +74,7 @@ const OverviewCategories = () => {
         <div>
           <input
             onChange={handleChange}
+            autoFocus={false}
             type="text"
             className="w-full block h-[50px] px-5 rounded-md outline-none"
             placeholder="Search name of categories"
@@ -92,7 +99,9 @@ const OverviewCategories = () => {
                       <View></View>
                       {item.userId === auth.currentUser.uid && (
                         <>
-                          <Edit></Edit>
+                          <Edit
+                            onClick={() => handleEdit(item.category_id)}
+                          ></Edit>
                           <Remove
                             onClick={() => handleRemove(item.category_id)}
                           ></Remove>

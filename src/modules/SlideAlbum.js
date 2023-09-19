@@ -47,7 +47,6 @@ const SlideAlbum = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        navigation={true}
         className="mySwiper"
         pagination={{
           clickable: true,
