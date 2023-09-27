@@ -73,7 +73,8 @@ const OverviewCategories = () => {
             onChange={handleChange}
             autoFocus={false}
             type="text"
-            className="w-full block h-[50px] px-5 rounded-md outline-none"
+            className="w-full h-[50px] bg-[#e4e6eb] sm:text-sm
+            placeholder:text-black outline-none border-2 border-transparent focus:border-blue-500  rounded-md px-5 focus:shadow-black transition-all shadow-lg"
             placeholder="Search name of categories"
           />
         </div>

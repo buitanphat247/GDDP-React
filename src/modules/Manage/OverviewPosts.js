@@ -79,7 +79,8 @@ const OverviewPosts = () => {
               autoFocus={false}
               onChange={handleChange}
               type="text"
-              className="w-full block h-[50px] px-5 rounded-md outline-none"
+              className="w-full h-[50px] bg-[#e4e6eb] sm:text-sm
+              placeholder:text-black outline-none border-2 border-transparent focus:border-blue-500  rounded-md px-5 focus:shadow-black transition-all shadow-lg"
               placeholder="Search name of posts"
             />
           </div>
@@ -87,10 +88,14 @@ const OverviewPosts = () => {
             <tbody>
               <tr className="text-xl bg-blue-400 capitalize">
                 <th className="w-1/12 border sm:hidden">id</th>
-                <th className="w-1/3 sm:w-1 sm:text-lg md:text-xl xl:text-2xl">post</th>
+                <th className="w-1/3 sm:w-1 sm:text-lg md:text-xl xl:text-2xl">
+                  post
+                </th>
                 <th className="w-1/6 sm:hidden">category</th>
                 <th className="w-1/6 sm:hidden">author</th>
-                <th className="w-1/12 sm:text-lg md:text-xl xl:text-2xl xl:w-1/6">actions</th>
+                <th className="w-1/12 sm:text-lg md:text-xl xl:text-2xl xl:w-1/6">
+                  actions
+                </th>
               </tr>
               {data.length > 0 &&
                 data.map((item, index) => {

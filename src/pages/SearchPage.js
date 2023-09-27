@@ -10,7 +10,6 @@ const SearchPage = () => {
   document.title = "Tìm kiếm | Giáo Dục Địa Phương ";
   const { dataPost } = useDataPost();
   const navigate = useNavigate();
-  console.log(0.1 + 0.2);
   const handleClick = (id) => {
     navigate(`/details-news-page/${id}`);
   };

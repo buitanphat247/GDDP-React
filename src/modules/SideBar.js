@@ -77,7 +77,7 @@ const SideBar = () => {
         isShow === true
           ? "sm:translate-x-[0%] xl:translate-x-[0%]"
           : "sm:translate-x-[-100%] xl:translate-x-[0%]"
-      }  sm:absolute xl:sticky xl:top-0 xl:border-r xl:border-black xl:bottom-0 xl:left-0 xl:h-[100vh] md:fixed  sm:w-full md:w-[50%] lg:w-[30%] xl:w-[100%] sm:bottom-0 sm:top-0 sm:left-0 sm:right-0 transition-all z-[100] h-auto overflow-auto bg-slate-300`}
+      }  sm:absolute  xl:sticky xl:top-0 xl:border-r xl:border-black xl:bottom-0 xl:left-0 xl:h-[100vh] md:fixed  sm:w-full md:w-[50%] lg:w-[30%] xl:w-[100%] sm:bottom-0 sm:top-0 sm:left-0 sm:right-0 transition-all z-[100] h-auto overflow-auto bg-slate-300`}
     >
       {/* logo */}
       <div className="flex justify-between items-center px-3 sm:py-2">
@@ -85,7 +85,7 @@ const SideBar = () => {
           <NavLink
             to="/"
             onClick={() => dispatch(setSideBarShow(false))}
-            className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500"
+            className="text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 transition-all"
           >
             LinuStar
           </NavLink>
