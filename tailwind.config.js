@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js}"],
+  darkMode: "class",
   theme: {
     screens: {
       sm: "320px",
@@ -12,7 +13,7 @@ module.exports = {
       lg: "768px",
       // => @media (min-width: 1024px) { ... }
 
-      xl: "1280px",
+      xl: "1024px",
       // => @media (min-width: 1280px) { ... }
     },
   },

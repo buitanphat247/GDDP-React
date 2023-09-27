@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setListCategories } from "../../slice/CategoriesSlice";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import TagNamePage from "../../components/card/TagNamePage";
 const OverviewCategories = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -60,17 +61,13 @@ const OverviewCategories = () => {
     navigate(`/manage/categories/${id}`);
   };
   return (
-    <div className="min-h-[70vh] p-10">
-      <div className="h-full rounded-md bg-slate-300 p-10">
-        <div className="mb-5">
-          <div className="font-bold uppercase text-3xl flex items-center gap-x-2">
-            <i className="fa-solid fa-boxes-stacked"></i>
-            <h1>All categories</h1>
-          </div>
-          <span className=" text-lg mt-5 capitalize">
-            Admin Manage categories
-          </span>
-        </div>
+    <div className="min-h-[70vh] p-10 sm:px-0">
+      <div className="h-full sm:rounded-none bg-slate-300 sm:p-2 xl:p-10">
+        <TagNamePage
+          icon={<i className="fa-solid fa-boxes-stacked"></i>}
+          title="all categories"
+          desc="admin mange categories"
+        ></TagNamePage>
         <div>
           <input
             onChange={handleChange}
@@ -83,18 +80,20 @@ const OverviewCategories = () => {
         <table className="bg-white w-full border-1 mt-5">
           <tbody>
             <tr className="text-xl bg-blue-400 capitalize">
-              <th className="w-1/12 border ">ID</th>
-              <th className="w-1/3">name category</th>
-              <th className="w-1/3">slug category</th>
-              <th className="w-1/12">actions</th>
+              <th className="w-1/12 sm:hidden border ">ID</th>
+              <th className="w-1/3 sm:text-lg md:text-xl xl:text-2xlg sm:w-1">name category</th>
+              <th className="w-1/3 sm:hidden">slug category</th>
+              <th className="w-1/12 sm:text-lg md:text-xl xl:text-2xl">actions</th>
             </tr>
             {list_categories.length > 0 &&
               list_categories.map((item) => {
                 return (
                   <tr className="text-xl font-bold" key={item.category_id}>
-                    <td>{item.category_id.slice(0, 8) + "..."}</td>
-                    <td className="capitalize">{item.category}</td>
-                    <td>{item.slug_category}</td>
+                    <td className="sm:hidden">
+                      {item.category_id.slice(0, 8) + "..."}
+                    </td>
+                    <td className="capitalize sm:text-lg md:text-xl xl:text-2xl">{item.category}</td>
+                    <td className="sm:hidden">{item.slug_category}</td>
                     <td className="capitalize flex justify-around gap-x-3 border-none">
                       <View></View>
                       {item.userId === auth.currentUser.uid && (

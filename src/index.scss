@@ -1,14 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+  &::-webkit-scrollbar {
+    width: 0px; /* Chiều rộng của thanh cuộn */
+  }
+}
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  background: #f0f2f5;
+  background: #f0f5f5;
   font-family: "Poppins", sans-serif;
   &::-webkit-scrollbar {
-    width: 5px; /* Chiều rộng của thanh cuộn */
+    width: 0px; /* Chiều rộng của thanh cuộn */
   }
 
   &::-webkit-scrollbar-thumb {
@@ -62,7 +66,7 @@ table {
     top: 0;
     z-index: 1000;
     background: white;
-    height: 90px;
+    min-height: 50px;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
     font-size: 2rem;
@@ -71,12 +75,93 @@ table {
     min-height: 500px;
   }
 }
+
 .text-gradient {
   background-image: linear-gradient(to right, #0074e4, #ff3f3f);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-br{
+br {
   margin: 30px;
+}
+
+.entry-content,
+.entry-content .ql-snow .ql-editor {
+  font-family: "Epilogue", sans-serif;
+  font-size: 22px;
+  h2 {
+    margin-bottom: 25px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  p {
+    margin-bottom: 20px;
+    line-height: 2;
+  }
+  img {
+    width: 60%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+    margin: 5px;
+  }
+  span {
+    background: transparent;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+  ul,
+  ol {
+    margin-bottom: 20px;
+    padding-left: 40px;
+    margin-left: 0;
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  .ql-indent-1 {
+    margin-left: 20px;
+  }
+  @media screen and (max-width: 1023.98px) {
+    font-size: 14px;
+    h2 {
+      font-size: 31px;
+    }
+    h3 {
+      font-size: 29px;
+    }
+    h4 {
+      font-size: 25px;
+    }
+  }
+  .ql-align-center {
+    text-align: center !important;
+  }
+  .ql-align-right {
+    text-align: right;
+  }
+
+  .ql-align-left {
+    text-align: left;
+  }
+}
+
+.image-content-float {
+  img {
+    margin: 0 auto;
+  }
+}
+.react-images__view-image {
+  display: block;
+  margin: 0 auto;
 }

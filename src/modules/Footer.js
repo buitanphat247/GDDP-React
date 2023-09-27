@@ -5,16 +5,16 @@ const mapUrl =
 
 const Footer = () => {
   return (
-    <div className="w-full mx-auto flex gap-x-5 bg-slate-800 p-5 px-10 border-t border-black">
-      <div className="flex gap-x-5">
-        <div className="w-[150px]">
+    <div className="w-full mx-auto flex xl:px-5 xl:flex-row gap-x-5 sm:gap-y-2 sm:flex-col bg-slate-800 sm:p-2 p-5 sm:px-2 border-t border-black">
+      <div className="flex gap-x-5 sm:flex-col md:flex-row">
+        <div className="w-[150px] sm:hidden md:block">
           <img
-            className="w-full"
+            className="w-full h-full object-cover"
             srcSet="https://upload.wikimedia.org/wikipedia/vi/thumb/4/4e/Bi%E1%BB%83u_tr%C6%B0ng_t%E1%BB%89nh_B%C3%A0_R%E1%BB%8Ba_%E2%80%93_V%C5%A9ng_T%C3%A0u.svg/1220px-Bi%E1%BB%83u_tr%C6%B0ng_t%E1%BB%89nh_B%C3%A0_R%E1%BB%8Ba_%E2%80%93_V%C5%A9ng_T%C3%A0u.svg.png"
             alt=""
           />
         </div>
-        <div className=" flex-1 text-white font-medium text-xl capitalize flex flex-col justify-around">
+        <div className="sm:text-base md:text-lg lg:text-lg flex-1 text-justify text-white font-medium capitalize flex flex-col justify-around">
           <h1>© 2012-2022 Bản quyền thuộc về Trang Công Nghệ.</h1>
           <p>Địa chỉ: 9 Đường Thi Sách, Phường 8, Tỉnh Bà Rịa - Vũng Tàu</p>
           <p>Email: buitanphat2747@thpt-vungtau.edu.vn</p>
@@ -25,7 +25,7 @@ const Footer = () => {
       <div className="flex-1">
         <iframe
           src={mapUrl}
-          className="h-full rounded-lg w-full"
+          className="h-full rounded-lg w-full sm:h-[200px] md:h-[300px]"
           style={{ border: "0" }}
           allowFullScreen=""
           loading="lazy"

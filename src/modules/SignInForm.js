@@ -7,9 +7,12 @@ import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../store/firebaseconfig";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setIsLogin } from "../slice/LoginSlice";
 
 const SignInForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({});
   const onSubmit = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
@@ -19,6 +22,8 @@ const SignInForm = () => {
           password: "",
         });
         toast.success("Login account success");
+        dispatch(setIsLogin(true));
+        localStorage.setItem("isLogin", true);
         navigate("/"); // ...
       })
       .catch((error) => {

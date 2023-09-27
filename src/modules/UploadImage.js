@@ -21,28 +21,32 @@ const UploadImage = () => {
     (state) => state.UploadImage
   );
   const handleChange = (e) => {
-    const file = e.target.files[0];
-    dispatch(setName_image(file.name));
-    const storage = getStorage();
-    const storageRef = ref(storage, "images/" + file.name);
+    try {
+      const file = e?.target?.files[0];
+      dispatch(setName_image(file?.name));
+      const storage = getStorage();
+      const storageRef = ref(storage, "images/" + file?.name);
 
-    const uploadTask = uploadBytesResumable(storageRef, file);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        dispatch(handleProgress(progress));
-      },
-      (error) => {
-        toast.error("Upload failed");
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          dispatch(setLink_image(downloadURL));
-        });
-      }
-    );
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot?.bytesTransferred / snapshot?.totalBytes) * 100;
+          dispatch(handleProgress(progress));
+        },
+        (error) => {
+          toast.error("Upload failed");
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            dispatch(setLink_image(downloadURL));
+          });
+        }
+      );
+    } catch (error) {
+      toast.error("Upload failed");
+    }
   };
   const handleRemove = () => {
     const storage = getStorage();
@@ -60,10 +64,10 @@ const UploadImage = () => {
       <Label htmlFor="poster">Poster of news</Label>
       <div
         htmlFor="poster"
-        className="border rounded-md w-full h-[350px] bg-white relative"
+        className="border rounded-md w-full sm:h-[250px] md:h-[300px] lg:h-[350px] xl:h-[350px] bg-white relative"
       >
         <input
-          className="w-full block h-[350px] p-4 border opacity-0" // Đặt kích thước của trường nhập tệp tin bằng lớp CSS
+          className="w-full block sm:h-[250px] md:h-[300px] lg:h-[350px] p-4 border opacity-0" // Đặt kích thước của trường nhập tệp tin bằng lớp CSS
           onChange={handleChange}
           type="file"
           name="poster"

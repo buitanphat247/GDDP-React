@@ -3,7 +3,7 @@ import Button from "../../components/button/Button";
 
 const PosItemNewestLarge = () => {
   return (
-    <div className="col-span-2 bg-white shadow-xl shadow-slate-400 p-2 rounded-md cursor-pointer relative group h-auto flex flex-col">
+    <div className="col-span-2 bg-green-200 p-2 rounded-md cursor-pointer relative group h-auto border-2 flex flex-col">
       <div className="rounded-md relative w-full ">
         <img
           className="w-full h-full rounded-md"

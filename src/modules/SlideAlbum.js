@@ -38,28 +38,34 @@ const link_image = [
 
 const SlideAlbum = () => {
   return (
-    <div className="gap-x-5 w-full px-10 pb-10">
+    <div className="w-full sm:px-2 sm:pb-5 xl:px-5">
       <Swiper
-        slidesPerView={3}
         centeredSlides={false}
-        spaceBetween={10}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
         className="mySwiper"
-        pagination={{
-          clickable: true,
-        }}
         modules={[Autoplay, Pagination, Navigation]}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          1024:{
+            slidesPerView: 3,
+            spaceBetween: 10,
+
+          }
+        }}
       >
         {link_image.map((item, index) => {
           return (
             <SwiperSlide key={index}>
-              <div className="relative cursor-pointer h-[300px] rounded-xl overflow-hidden">
+              <div className="relative cursor-pointer sm:h-[200px] md:h-[300px] lg:h-[350px] xl:h-[300px] rounded-xl overflow-hidden">
                 <img
                   src={item.url}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-xl"
                   alt=""
                 />
                 <div className="bg-black absolute top-0 w-full h-full rounded-md opacity-30"></div>

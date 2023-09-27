@@ -1,33 +1,61 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Label from "../../components/label/Label";
-import { useForm } from "react-hook-form";
 import Input from "../../components/input/Input";
-import TextArea from "../../components/input/TextArea";
-import UploadImage from "../UploadImage";
-import Button from "../../components/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import useGetDay from "../../hooks/useGetDay";
+import { useNavigate, useParams } from "react-router";
+import { useForm } from "react-hook-form";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../../store/firebaseconfig";
+import slugify from "slugify";
+import {
+  handleProgress,
+  handleRemoveImage,
+  setLink_image,
+  setName_image,
+} from "../../slice/UploadImageSlice";
+import { resetValueEditor, setValueEditor } from "../../slice/EditorSlice";
+import { toast } from "react-toastify";
+import TagNamePage from "../../components/card/TagNamePage";
+import TextArea from "../../components/input/TextArea";
 import Select from "../../components/select/Select";
 import Editor from "../../components/Editor";
-import { addDoc, collection, updateDoc } from "firebase/firestore";
-import { auth, db } from "../../store/firebaseconfig";
-import { toast } from "react-toastify";
-import slugify from "slugify";
-import { handleRemoveImage } from "../../slice/UploadImageSlice";
-import { resetValueEditor } from "../../slice/EditorSlice";
-import { useNavigate } from "react-router";
-import TagNamePage from "../../components/card/TagNamePage";
-const AddPost = () => {
+import Button from "../../components/button/Button";
+import UploadImage from "../UploadImage";
+
+const UpdatePost = () => {
+  const idPost = useParams().slug;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { formattedDate } = useGetDay();
   const { handleSubmit, control, reset } = useForm();
   const { name_image, link_image } = useSelector((state) => state.UploadImage);
   const { value } = useSelector((state) => state.EditorSlice);
+  useEffect(() => {
+    async function getData() {
+      try {
+        const docRef = doc(db, "posts", idPost);
+        const docSnap = await getDoc(docRef);
+        reset({
+          title: docSnap.data().title,
+          slug_post: docSnap.data().slug_post,
+          description: docSnap.data().description,
+          category: docSnap.data().category,
+        });
+        dispatch(setValueEditor(docSnap.data().html));
+        dispatch(handleProgress(100));
+        dispatch(setLink_image(docSnap.data().link_image));
+        dispatch(setName_image(docSnap.data().name_image));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, [dispatch, idPost, reset]);
   const onSubmit = async (data) => {
     // Add a new document with a generated id.
     try {
-      const docRef = await addDoc(collection(db, "posts"), {
+      await updateDoc(doc(db, "posts", idPost), {
         ...data,
         title: data.title.toLowerCase().trimEnd(),
         slug_post: slugify(data.slug_post || data.title, {
@@ -45,9 +73,6 @@ const AddPost = () => {
         author: auth.currentUser.displayName,
         userId: auth.currentUser.uid,
       });
-      await updateDoc(docRef, {
-        post_id: docRef.id,
-      });
       reset({
         title: "",
         slug_post: "",
@@ -61,14 +86,13 @@ const AddPost = () => {
       toast.error("Error while submit");
     }
   };
-
   return (
     <div className="min-h-[70vh] p-10 sm:px-0">
-      <div className="h-full sm:rounded-none bg-slate-300 sm:p-2 xl:p-10">
+      <div className="h-full sm:rounded-none bg-slate-300 sm:p-2">
         <TagNamePage
           icon={<i className="fa-regular fa-pen-to-square"></i>}
-          title='add posts'
-          desc='add your posts'
+          title="update posts"
+          desc="update your posts"
         ></TagNamePage>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid sm:grid-cols-1 xl:grid-cols-2 xl:gap-x-10 gap-y-5">
@@ -117,4 +141,4 @@ const AddPost = () => {
   );
 };
 
-export default AddPost;
+export default UpdatePost;

@@ -9,10 +9,13 @@ import { addDoc, collection } from "firebase/firestore";
 import useGetDay from "../hooks/useGetDay";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { setIsLogin } from "../slice/LoginSlice";
+import { useDispatch } from "react-redux";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
   const { formattedDate } = useGetDay();
+  const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({});
   const onSubmit = (data) => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -47,6 +50,9 @@ const SignUpForm = () => {
           password: "",
         });
         toast.success("Create new account success");
+        dispatch(setIsLogin(true));
+        localStorage.setItem("isLogin", true);
+
         navigate("/");
       })
       .catch((error) => {

@@ -16,10 +16,13 @@ import {
 import { auth, db } from "../../store/firebaseconfig";
 import Swal from "sweetalert2";
 import debounce from "lodash/debounce";
+import { useNavigate } from "react-router";
+import TagNamePage from "../../components/card/TagNamePage";
 
 const OverviewPosts = () => {
   const dispatch = useDispatch();
   const [query_post, setQueryPosts] = useState("");
+  const navigate = useNavigate();
   const handleRemove = (id) => {
     Swal.fire({
       title: "Xác nhận xóa?",
@@ -55,18 +58,22 @@ const OverviewPosts = () => {
   const handleChange = debounce((e) => {
     setQueryPosts(e.target.value);
   }, 500);
+  const handleClick = (id) => {
+    navigate(`/details-news-page/${id}`);
+  };
+  const handleEdit = (id) => {
+    navigate(`/manage/add-posts/${id}`);
+  };
   const { data } = useSelector((state) => state.global);
   return (
     <>
-      <div className="min-h-[70vh] p-10">
-        <div className="h-full rounded-md bg-slate-300 p-10">
-          <div className="mb-5">
-            <div className="font-bold uppercase text-3xl flex items-center gap-x-2">
-              <i className="fa-solid fa-newspaper"></i>
-              <h1>All Posts</h1>
-            </div>
-            <span className=" text-lg mt-5 capitalize">Admin Manage Posts</span>
-          </div>
+      <div className="min-h-[70vh] p-10 sm:px-0">
+        <div className="h-full sm:rounded-none bg-slate-300 sm:p-2 xl:p-10">
+          <TagNamePage
+            icon={<i className="fa-solid fa-newspaper"></i>}
+            title="All Posts"
+            desc="Admin Manage Posts"
+          ></TagNamePage>
           <div>
             <input
               autoFocus={false}
@@ -79,34 +86,38 @@ const OverviewPosts = () => {
           <table className="bg-white w-full border-1 mt-5">
             <tbody>
               <tr className="text-xl bg-blue-400 capitalize">
-                <th className="w-1/12 border ">id</th>
-                <th className="w-1/3">post</th>
-                <th className="w-1/6">category</th>
-                <th className="w-1/6">author</th>
-                <th className="w-1/12">actions</th>
+                <th className="w-1/12 border sm:hidden">id</th>
+                <th className="w-1/3 sm:w-1 sm:text-lg md:text-xl xl:text-2xl">post</th>
+                <th className="w-1/6 sm:hidden">category</th>
+                <th className="w-1/6 sm:hidden">author</th>
+                <th className="w-1/12 sm:text-lg md:text-xl xl:text-2xl xl:w-1/6">actions</th>
               </tr>
               {data.length > 0 &&
-                data.map((item) => {
+                data.map((item, index) => {
                   return (
-                    <tr className="text-xl font-bold" key={item.post_id}>
-                      <td>{item.post_id.slice(0, 8) + "...."}</td>
+                    <tr className="text-xl font-bold" key={index}>
+                      <td className="sm:hidden">
+                        {item?.post_id?.slice(0, 8) + "...."}
+                      </td>
                       <td>
                         <CardPost
-                          link_image={item.link_image}
-                          title={item.title}
+                          link_image={item?.link_image}
+                          title={item?.title}
                         ></CardPost>
                       </td>
-                      <td className="capitalize ">
+                      <td className="capitalize sm:hidden">
                         <Button className="bg-blue-400 text-white font-bold w-[150px] py-3 capitalize rounded-lg">
-                          {item.category}
+                          {item?.category}
                         </Button>
                       </td>
-                      <td>{item.author}</td>
-                      <td className="capitalize flex justify-around gap-x-3 border-none">
-                        <View></View>
-                        {item.userId === auth.currentUser.uid && (
+                      <td className="sm:hidden">{item?.author}</td>
+                      <td className="capitalize flex justify-around items-center  border-2 border-white sm:gap-x-2 border-none">
+                        <View onClick={() => handleClick(item?.post_id)}></View>
+                        {item?.userId === auth?.currentUser?.uid && (
                           <>
-                            <Edit></Edit>
+                            <Edit
+                              onClick={() => handleEdit(item.post_id)}
+                            ></Edit>
                             <Remove
                               onClick={() => handleRemove(item.post_id)}
                             ></Remove>
