@@ -5,7 +5,8 @@ import HeaderNav from "../components/HeaderNav";
 import useDataPost from "../hooks/useDataPost";
 import parse from "html-react-parser";
 import { useNavigate } from "react-router";
-
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 const SearchPage = () => {
   document.title = "Tìm kiếm | Giáo Dục Địa Phương ";
   const { dataPost } = useDataPost();
@@ -18,6 +19,21 @@ const SearchPage = () => {
       <HeaderNav></HeaderNav>
       <div className=" sm:px-3 sm:pb-5 xl:px-5">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:pb-5">
+          {dataPost.length === 0 &&
+            Array(24)
+              .fill("")
+              .map((item, index) => {
+                return (
+                  <div>
+                    <Stack spacing={1}>
+                      <Skeleton variant="rounded" height={300} />
+                      <Skeleton variant="rounded" height={20} />
+                      <Skeleton variant="rounded" height={20} />
+                      <Skeleton variant="rounded" height={20} />
+                    </Stack>
+                  </div>
+                );
+              })}{" "}
           {dataPost.length > 0 &&
             dataPost.map((item, index) => {
               return (

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import HeaderNav from "../components/HeaderNav";
-import PostItemFearture from "../modules/post-items/PostItemFearture";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import NavBarPosts from "../modules/navBars/NavBarPosts";
 import { useParams } from "react-router";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../store/firebaseconfig";
 import ActionsDetails from "../components/actions/ActionsDetails";
 import parse from "html-react-parser";
+import PostFearture from "../modules/posts/PostFearture";
+
 const DetailPage = () => {
   const id = useParams().slug;
   const [data, setData] = useState("");
@@ -29,15 +27,15 @@ const DetailPage = () => {
   return (
     <div className="border-black">
       <HeaderNav></HeaderNav>
-      <div className="px-10 py-10 grid gap-y-5 bg-slate-300 mx-10 mb-10 rounded-md ">
-        <div className="relative h-[450px] w-[70%] mx-auto block">
+      <div className="xl:px-10 sm:px-2 py-10 grid gap-y-5 bg-slate-300 xl:mx-10 mb-10 rounded-md ">
+        <div className="relative xl:h-[450px] sm:h-[250px] xl:w-[70%] sm:w-[100%] mx-auto block">
           <img
             className="rounded-md w-full h-full object-cover block"
             src={data?.link_image}
             alt=""
           />
           <div className="absolute top-0 w-full h-full right-0 left-0 bg-black rounded-md opacity-50"></div>
-          <h1 className="absolute text-white uppercase top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-10 text-5xl leading-relaxed col-span-2 font-bold text-center w-[90%] line-clamp-3">
+          <h1 className="absolute text-white uppercase top-1/2 left-1/2 transform -translate-x-1/2 sm:text-xl -translate-y-1/2 xl:px-10 xl:text-5xl xl:leading-relaxed col-span-2 font-bold text-center xl:w-[90%] sm:w-[100%] line-clamp-4">
             {data?.title}
           </h1>
           <ActionsDetails></ActionsDetails>
@@ -47,32 +45,8 @@ const DetailPage = () => {
         </div>
       </div>
 
-      <div className="px-10 pb-10 ">
-        <NavBarPosts title="Bài viết Đề xuất"></NavBarPosts>
-        <div className="py-5">
-          <Swiper
-            slidesPerView={4}
-            centeredSlides={false}
-            spaceBetween={30}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            className="mySwiper"
-            modules={[Autoplay, Pagination, Navigation]}
-          >
-            {Array(20)
-              .fill("")
-              .map((item, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <PostItemFearture></PostItemFearture>
-                  </SwiperSlide>
-                );
-              })}
-          </Swiper>
-        </div>
-      </div>
+      <PostFearture title={"bài viết nổi bậc"}></PostFearture>
+
     </div>
   );
 };

@@ -9,7 +9,8 @@ import PostItemFearture from "../post-items/PostItemFearture";
 import useDataPost from "../../hooks/useDataPost";
 import parse from "html-react-parser";
 import { useNavigate } from "react-router";
-
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 const PostNewest = ({ title }) => {
   const { dataPost } = useDataPost();
   const navigate = useNavigate();
@@ -47,6 +48,23 @@ const PostNewest = ({ title }) => {
             },
           }}
         >
+          {dataPost.length === 0 &&
+            Array(21)
+              .fill("")
+              .map((item, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <div>
+                      <Stack spacing={1}>
+                        <Skeleton variant="rounded" height={300} />
+                        <Skeleton variant="rounded" height={20} />
+                        <Skeleton variant="rounded" height={20} />
+                        <Skeleton variant="rounded" height={20} />
+                      </Stack>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}{" "}
           {dataPost.length > 0 &&
             dataPost.slice(10).map((item, index) => {
               return (

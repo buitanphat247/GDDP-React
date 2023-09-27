@@ -133,7 +133,10 @@ br {
     margin-left: 20px;
   }
   @media screen and (max-width: 1023.98px) {
-    font-size: 14px;
+    font-size: 22px;
+    h1 {
+      font-size: 24px;
+    }
     h2 {
       font-size: 31px;
     }
@@ -142,6 +145,14 @@ br {
     }
     h4 {
       font-size: 25px;
+    }
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      display: block;
+      margin: 5px;
     }
   }
   .ql-align-center {

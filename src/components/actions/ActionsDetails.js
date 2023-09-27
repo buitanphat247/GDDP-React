@@ -3,7 +3,7 @@ import Button from "../button/Button";
 
 const ActionsDetails = () => {
   return (
-    <div className="absolute flex gap-x-5 bottom-10 left-10 ">
+    <div className="absolute gap-x-5 bottom-10 left-10 sm:hidden xl:flex">
       <Button className=" flex items-center justify-center gap-x-3 bg-green-400 opacity-80 text-2xl font-bold uppercase rounded-md w-[50px] h-[50px] text-white">
         <span>
           <i className="fa-regular fa-heart"></i>
