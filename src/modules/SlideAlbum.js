@@ -62,7 +62,7 @@ const SlideAlbum = () => {
         {link_image.map((item, index) => {
           return (
             <SwiperSlide key={index}>
-              <div className="relative cursor-pointer sm:h-[200px] md:h-[300px] lg:h-[350px] xl:h-[300px] rounded-xl overflow-hidden">
+              <div className="relative cursor-pointer sm:h-[250px] md:h-[300px] lg:h-[350px] xl:h-[300px] rounded-xl overflow-hidden">
                 <img
                   src={item.url}
                   className="w-full h-full object-cover rounded-xl"

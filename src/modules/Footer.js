@@ -14,7 +14,7 @@ const Footer = () => {
             alt=""
           />
         </div>
-        <div className="sm:text-base md:text-lg lg:text-lg flex-1 text-justify text-white font-medium capitalize flex flex-col justify-around">
+        <div className="sm:text-base md:text-lg lg:text-lg flex-1 xl:text-justify sm:gap-y-2 text-white font-medium capitalize flex flex-col justify-around">
           <h1>© 2012-2022 Bản quyền thuộc về Trang Công Nghệ.</h1>
           <p>Địa chỉ: 9 Đường Thi Sách, Phường 8, Tỉnh Bà Rịa - Vũng Tàu</p>
           <p>Email: buitanphat2747@thpt-vungtau.edu.vn</p>

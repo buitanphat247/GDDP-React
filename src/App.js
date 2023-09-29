@@ -17,7 +17,6 @@ import UpdateCategory from "./modules/actions_add_items/UpdateCategory";
 import DetailPage from "./pages/DetailPage";
 import { useSelector } from "react-redux";
 import UpdatePost from "./modules/actions_add_items/UpdatePost";
-import Album from "./modules/photos/Album";
 
 const App = () => {
   const { isLogin } = useSelector((state) => state.Login);
@@ -42,10 +41,10 @@ const App = () => {
             path="/details-news-page/:slug"
             element={<DetailPage></DetailPage>}
           ></Route>
-          <Route
+          {/* <Route
             path="/anh-dep-ba-ria-vung-tau"
             element={<Album></Album>}
-          ></Route>
+          ></Route> */}
           {isLogin && (
             <>
               <Route path="/manage" element={<DashBoard></DashBoard>}>
