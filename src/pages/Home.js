@@ -8,7 +8,7 @@ import PostRecomend from "../modules/posts/PostRecomend";
 const Home = () => {
   document.title = "Giáo Dục Địa Phương";
   return (
-    <div className={` border-black`}>
+    <div className={` border-black dark:bg-slate-500 transition-all`}>
       <HeaderNav></HeaderNav>
       <SlideAlbum></SlideAlbum>
       <PostFearture title={"bài viết nổi bậc"}></PostFearture>

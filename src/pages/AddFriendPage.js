@@ -7,7 +7,7 @@ const AddFriendPage = () => {
   document.title = "Bạn bè | Giáo Dục Địa Phương ";
 
   return (
-    <div className="border-black">
+    <div className="border-black dark:bg-slate-500 transition-all">
       <HeaderNav></HeaderNav>
       <div className=" sm:px-3 sm:pb-5 xl:px-5">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:pb-5">

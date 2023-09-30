@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import store from "./store/configureStore";
+import { Analytics } from "@vercel/analytics/react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
@@ -26,6 +27,7 @@ root.render(
         <App />
       </Provider>
     </BrowserRouter>
+    <Analytics id="prj_9ewt3kcCiR1Ebka4qKdnAsYzIiPL" />
   </>
 );
 

@@ -71,7 +71,7 @@ const OverviewPosts = () => {
         <div className="h-full sm:rounded-none bg-slate-300 sm:p-2 xl:p-10">
           <TagNamePage
             icon={<i className="fa-solid fa-newspaper"></i>}
-            title="All Posts"
+            title={`All Posts - ${data.length}`}
             desc="Admin Manage Posts"
           ></TagNamePage>
           <div>

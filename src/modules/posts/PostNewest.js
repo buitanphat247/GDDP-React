@@ -34,14 +34,11 @@ const PostNewest = ({ title }) => {
               slidesPerView: 1,
               spaceBetween: 10,
             },
-            576: {
+            768: {
               slidesPerView: 2,
               spaceBetween: 10,
             },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            },
+           
             1024: {
               slidesPerView: 4,
               spaceBetween: 10,

@@ -77,7 +77,7 @@ const SideBar = () => {
         isShow === true
           ? "sm:translate-x-[0%] xl:translate-x-[0%]"
           : "sm:translate-x-[-100%] xl:translate-x-[0%]"
-      }  sm:absolute  xl:sticky xl:top-0 xl:border-r xl:border-black xl:bottom-0 xl:left-0 xl:h-[100vh] md:fixed  sm:w-[100%] md:w-[50%] lg:w-[30%] xl:w-[100%] sm:bottom-0 sm:top-0 sm:left-0 sm:right-0 transition-all z-[100] h-auto overflow-auto bg-slate-300`}
+      } dark:bg-slate-800 dark:border-white dark:text-white sm:absolute  xl:sticky xl:top-0 xl:border-r xl:border-black xl:bottom-0 xl:left-0 xl:h-[100vh] md:fixed  sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[100%] sm:bottom-0 sm:top-0 sm:left-0 sm:right-0 transition-all z-[100] h-auto overflow-auto bg-slate-300`}
     >
       {/* logo */}
       <div className="flex justify-between items-center px-3 sm:py-2">
@@ -99,11 +99,11 @@ const SideBar = () => {
       </div>
       {/* line */}
       <div className="px-3">
-        <div className=" border border-gray-500 w-full h-[1px]"></div>
+        <div className=" border border-gray-500 w-full h-[1px] dark:border-white"></div>
       </div>
       <div className="h-full xl:h-[80vh]">
         {/* items */}
-        <div className="grid gap-y-3 mt-2 px-3">
+        <div className="grid gap-y-3 mt-2 px-3 ">
           <NavLink
             to="/"
             onClick={() => dispatch(setSideBarShow(false))}
@@ -147,19 +147,27 @@ const SideBar = () => {
             <span className="line-clamp-1  flex-1">{sideBar_list[2].name}</span>
           </NavLink>
 
-          <div className="text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer">
+          <NavLink
+            to="/docs"
+            onClick={() => dispatch(setSideBarShow(false))}
+            className={({ isActive }) =>
+              isActive
+                ? "text-lg text-blue-800 font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg line-clamp-1"
+                : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent line-clamp-1"
+            }
+          >
             <span className="w-[50px] h-full flex items-center justify-center">
               {sideBar_list[3].icon}
             </span>
             <span className="line-clamp-1  flex-1">{sideBar_list[3].name}</span>
-          </div>
+          </NavLink>
 
           {/* line */}
 
           {isLogin === true && (
             <>
               <div className="px-3">
-                <div className=" border border-gray-500 w-full h-[1px]"></div>
+                <div className=" border border-gray-500 w-full h-[1px] dark:border-white"></div>
               </div>
               <NavLink
                 to="/manage"
@@ -173,7 +181,9 @@ const SideBar = () => {
                 <span className="w-[50px] h-full flex items-center justify-center">
                   {sideBar_list[5].icon}
                 </span>
-                <span className="line-clamp-1  flex-1">{sideBar_list[5].name}</span>
+                <span className="line-clamp-1  flex-1">
+                  {sideBar_list[5].name}
+                </span>
               </NavLink>
               <NavLink
                 to="https://www.facebook.com/THPT.VungTau"
@@ -185,7 +195,9 @@ const SideBar = () => {
                 <span className="w-[50px] h-full flex items-center justify-center">
                   {sideBar_list[6].icon}
                 </span>
-                <span className="line-clamp-1  flex-1">{sideBar_list[6].name}</span>
+                <span className="line-clamp-1  flex-1">
+                  {sideBar_list[6].name}
+                </span>
               </NavLink>
               {/* handle logout */}
               <div
@@ -195,7 +207,9 @@ const SideBar = () => {
                 <span className="w-[50px] h-full flex items-center justify-center">
                   {sideBar_list[7].icon}
                 </span>
-                <span className="line-clamp-1  flex-1">{sideBar_list[7].name}</span>
+                <span className="line-clamp-1  flex-1">
+                  {sideBar_list[7].name}
+                </span>
               </div>
             </>
           )}

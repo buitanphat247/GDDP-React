@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 const HeaderManage = () => {
   const dispatch = useDispatch();
   return (
-    <div className="bg-slate-200 sticky top-0 z-50">
+    <div className="bg-slate-200 sticky top-0 z-50 dark:bg-slate-800 dark:text-white shadow-md shadow-white">
       <div className="grid sm:grid-cols-5 xl:grid-cols-4 capitalize text-xl font-bold">
         <NavLink
           to="/manage"

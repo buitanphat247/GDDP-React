@@ -5,6 +5,7 @@ const GlobalSlice = createSlice({
   initialState: {
     infor_user: null,
     data: [],
+    isDarkMode: JSON.parse(localStorage.getItem("dark")) || false,
   },
   reducers: {
     setInforUser: (state, action) => {
@@ -19,7 +20,13 @@ const GlobalSlice = createSlice({
         data: action.payload,
       };
     },
+    setIsDarkMode: (state, action) => {
+      return {
+        ...state,
+        isDarkMode: action.payload,
+      };
+    },
   },
 });
 export default GlobalSlice.reducer;
-export const { setInforUser, setData } = GlobalSlice.actions;
+export const { setInforUser, setData, setIsDarkMode } = GlobalSlice.actions;
