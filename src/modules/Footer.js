@@ -14,12 +14,23 @@ const Footer = () => {
             alt=""
           />
         </div>
-        <div className="sm:text-base md:text-lg lg:text-lg flex-1 xl:text-justify sm:gap-y-2 text-white font-medium capitalize flex flex-col justify-around">
-          <h1>© 2012-2022 Bản quyền thuộc về Trang Công Nghệ.</h1>
-          <p>Địa chỉ: 9 Đường Thi Sách, Phường 8, Tỉnh Bà Rịa - Vũng Tàu</p>
-          <p>Email: buitanphat2747@thpt-vungtau.edu.vn</p>
-          <p>Liên hệ: 0984380205 & 0338733565 & 0917317697</p>
-          <p>Chính sách bảo mật Thông tin toà soạn Quảng cáo RSS</p>
+        <div className="sm:text-base  md:text-lg lg:text-lg flex-1 xl:text-justify sm:gap-y-2 text-white capitalize flex flex-col justify-around">
+          <p>
+            <span className="font-bold">Địa chỉ: </span>9 Đường Thi Sách, Phường
+            8, Tỉnh Bà Rịa - Vũng Tàu
+          </p>
+          <p>
+            <span className="font-bold">Email: </span>{" "}
+            buitanphat2747@thpt-vungtau.edu.vn
+          </p>
+          <p>
+            <span className="font-bold">Số điện thoại: </span> 0984380205 &
+            0338733565 & 0917317697
+          </p>
+          <p className="font-bold sm:hidden xl:block">
+            Chính sách bảo mật Thông tin toà soạn Quảng cáo RSS
+            <br />© 2012-2023 Bản quyền thuộc về Trang Công Nghệ.
+          </p>
         </div>
       </div>
       <div className="flex-1">
@@ -32,6 +43,10 @@ const Footer = () => {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
+      <h1 className="xl:hidden sm:text-base md:text-lg lg:text-lg flex-1 xl:text-justify sm:gap-y-2 text-white font-medium capitalize text-center flex flex-col justify-around">
+        Chính sách bảo mật Thông tin toà soạn Quảng cáo RSS
+        <br />© 2012-2022 Bản quyền thuộc về Trang Công Nghệ.
+      </h1>
     </div>
   );
 };

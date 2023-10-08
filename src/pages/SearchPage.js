@@ -30,6 +30,8 @@ const SearchPage = () => {
                       <Skeleton variant="rounded" height={20} />
                       <Skeleton variant="rounded" height={20} />
                       <Skeleton variant="rounded" height={20} />
+                      <Skeleton variant="rounded" height={20} />
+                      <Skeleton variant="rounded" height={20} />
                     </Stack>
                   </div>
                 );

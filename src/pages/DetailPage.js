@@ -25,9 +25,9 @@ const DetailPage = () => {
     getData();
   }, [id]);
   return (
-    <div className="border-black">
+    <div className="border-black dark:bg-slate-500">
       <HeaderNav></HeaderNav>
-      <div className="xl:px-10 sm:px-2 py-10 grid gap-y-5 bg-slate-300 xl:mx-10 mb-10 rounded-md ">
+      <div className="xl:px-10 sm:px-2 py-10 grid gap-y-5 bg-slate-300  xl:mx-10 mb-10 rounded-md ">
         <div className="relative xl:h-[450px] sm:h-[250px] xl:w-[70%] sm:w-[100%] mx-auto block">
           <img
             className="rounded-md w-full h-full object-cover block"

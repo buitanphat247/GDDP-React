@@ -1,32 +1,55 @@
+import React, { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
-import Main from "./layout/Main";
-import SignUpPage from "./pages/SignUpPage";
-import SignInPage from "./pages/SignInPage";
-import DashBoard from "./layout/DashBoard";
-import OverviewPosts from "./modules/Manage/OverviewPosts";
-import AddCategory from "./modules/actions_add_items/AddCategory";
-import AddPost from "./modules/actions_add_items/AddPost";
-import OverviewCategories from "./modules/Manage/OverviewCategories";
-import ProfilePage from "./pages/ProfilePage";
-import SearchPage from "./pages/SearchPage";
-import AddFriendPage from "./pages/AddFriendPage";
-import Home from "./pages/Home";
-import ErrorPage from "./pages/ErrorPage";
-import UpdateCategory from "./modules/actions_add_items/UpdateCategory";
-import DetailPage from "./pages/DetailPage";
 import { useSelector } from "react-redux";
-import UpdatePost from "./modules/actions_add_items/UpdatePost";
-import DocsPage from "./pages/DocsPage";
+const Main = React.lazy(() => import("./layout/Main"));
+const SignUpPage = React.lazy(() => import("./pages/SignUpPage"));
+const SignInPage = React.lazy(() => import("./pages/SignInPage"));
+const DashBoard = React.lazy(() => import("./layout/DashBoard"));
+const AddCategory = React.lazy(() =>
+  import("./modules/actions_add_items/AddCategory")
+);
+const AddPost = React.lazy(() => import("./modules/actions_add_items/AddPost"));
+const OverviewCategories = React.lazy(() =>
+  import("./modules/Manage/OverviewCategories")
+);
+const ProfilePage = React.lazy(() => import("./pages/ProfilePage"));
+const SearchPage = React.lazy(() => import("./pages/SearchPage"));
+const AddFriendPage = React.lazy(() => import("./pages/AddFriendPage"));
+const Home = React.lazy(() => import("./pages/Home"));
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
+const UpdateCategory = React.lazy(() =>
+  import("./modules/actions_add_items/UpdateCategory")
+);
+const DetailPage = React.lazy(() => import("./pages/DetailPage"));
+const UpdatePost = React.lazy(() =>
+  import("./modules/actions_add_items/UpdatePost")
+);
+const DocsPage = React.lazy(() => import("./pages/DocsPage"));
+const OverviewPosts = React.lazy(() =>
+  import("./modules/Manage/OverviewPosts")
+);
+const GamesPage = React.lazy(() => import("./pages/GamesPage"));
 
 const App = () => {
   const { isLogin } = useSelector((state) => state.Login);
+  const { isDarkMode } = useSelector((state) => state.global);
   if (localStorage.getItem("dark") === "true") {
     // Nếu có, thêm lớp vào thẻ body
     document.body.classList.add("dark:bg-slate-500");
   }
+  useEffect(() => {
+    if (isDarkMode === true) {
+      const htmlElement = document.querySelector("html");
+      htmlElement.setAttribute("class", "dark");
+    } else {
+      const htmlElement = document.querySelector("html");
+      htmlElement.removeAttribute("class", "dark");
+    }
+  }, [isDarkMode]);
   return (
     <>
-      <Routes>
+      <Suspense>
+        <Routes>
           <Route path="/" element={<Main></Main>}>
             <Route path="/" element={<Home></Home>}></Route>
             <Route
@@ -41,6 +64,7 @@ const App = () => {
               path="/details-news-page/:slug"
               element={<DetailPage></DetailPage>}
             ></Route>
+            <Route path="/games" element={<GamesPage></GamesPage>}></Route>
             <Route path="/docs" element={<DocsPage></DocsPage>}></Route>
             {isLogin && (
               <>
@@ -91,7 +115,8 @@ const App = () => {
             </>
           )}
           <Route path="*" element={<ErrorPage></ErrorPage>}></Route>
-      </Routes>
+        </Routes>
+      </Suspense>
     </>
   );
 };

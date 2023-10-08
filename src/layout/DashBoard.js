@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 const DashBoard = () => {
   document.title='Quản lí | Giáo Dục Địa Phương'
   return (
-    <div>
+    <div className="dark:bg-slate-500">
       <HeaderManage></HeaderManage>
       <Outlet></Outlet>
     </div>

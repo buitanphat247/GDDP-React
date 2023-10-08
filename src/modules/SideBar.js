@@ -40,6 +40,10 @@ const sideBar_list = [
     name: "log out",
     icon: <i className="fa-solid fa-right-from-bracket"></i>,
   },
+  {
+    name: "games",
+    icon: <i className="fa-solid fa-gamepad"></i>,
+  },
 ];
 const SideBar = () => {
   const navigate = useNavigate();
@@ -73,11 +77,11 @@ const SideBar = () => {
 
   return (
     <div
-      className={`${
+      className={`dark:bg-slate-800 ${
         isShow === true
           ? "sm:translate-x-[0%] xl:translate-x-[0%]"
           : "sm:translate-x-[-100%] xl:translate-x-[0%]"
-      } dark:bg-slate-800 dark:border-white dark:text-white sm:absolute  xl:sticky xl:top-0 xl:border-r xl:border-black xl:bottom-0 xl:left-0 xl:h-[100vh] md:fixed  sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[100%] sm:bottom-0 sm:top-0 sm:left-0 sm:right-0 transition-all z-[100] h-auto overflow-auto bg-slate-300`}
+      }  dark:border-white dark:text-white sm:absolute  xl:sticky xl:top-0 xl:border-r xl:border-black xl:bottom-0 xl:left-0 xl:h-[100vh] md:fixed  sm:w-[100%] md:w-[50%] lg:w-[50%] xl:w-[100%] sm:bottom-0 sm:top-0 sm:left-0 sm:right-0 transition-all z-[100] h-auto overflow-auto bg-slate-300`}
     >
       {/* logo */}
       <div className="flex justify-between items-center px-3 sm:py-2">
@@ -160,6 +164,21 @@ const SideBar = () => {
               {sideBar_list[3].icon}
             </span>
             <span className="line-clamp-1  flex-1">{sideBar_list[3].name}</span>
+          </NavLink>
+
+          <NavLink
+            to="/games"
+            onClick={() => dispatch(setSideBarShow(false))}
+            className={({ isActive }) =>
+              isActive
+                ? "text-lg text-blue-800 font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer bg-white rounded-lg line-clamp-1"
+                : "text-lg font-bold capitalize h-[50px] flex items-center px-3 gap-x-2 cursor-pointer border-r-4 border-transparent line-clamp-1"
+            }
+          >
+            <span className="w-[50px] h-full flex items-center justify-center">
+              {sideBar_list[8].icon}
+            </span>
+            <span className="line-clamp-1  flex-1">{sideBar_list[8].name}</span>
           </NavLink>
 
           {/* line */}

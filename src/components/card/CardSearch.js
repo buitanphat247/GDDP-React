@@ -20,13 +20,15 @@ const CardSearch = ({
           alt=""
         />
       </div>
-      <div className="flex-1 flex text-xl gap-x-10 font-bold w-full justify-around items-center hover:text-blue-800 transition-all">
-        <h1 className="font-bold capitalize sm:text-xs md:text-sm lg:text-base xl:text-2xl flex-1 xl:line-clamp-1 sm:line-clamp-3 ">
-          {title}
+      <div className="w-[60%] font-bold capitalize sm:text-xs md:text-sm lg:text-base xl:text-2xl xl:line-clamp-1 sm:line-clamp-3 ">
+        {title}
+      </div>
+      <div className="flex-1 grid grid-cols-3">
+        <h1 className="sm:hidden xl:block text-center font-bold">{author}</h1>
+        <h1 className="sm:hidden xl:block text-center font-bold">
+          {dateUpdate}
         </h1>
-        <h1 className="sm:hidden xl:block">{author}</h1>
-        <h1 className="sm:hidden xl:block">{dateUpdate}</h1>
-        <h1 className="sm:hidden xl:block">xem thêm</h1>
+        <h1 className="sm:hidden xl:block text-center font-bold">xem thêm</h1>
       </div>
     </div>
   );

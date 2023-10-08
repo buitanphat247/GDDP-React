@@ -31,7 +31,7 @@
       href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
       rel="stylesheet"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_gddp_main.jpg" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -90,7 +90,7 @@
     Ba Ria Vung Tau, edtech Ba Ria Vung Tau, tim hieu Ba Ria Vung Tau, nang cao
     trinh do Ba Ria Vung Tau, ung dung hoc tap Ba Ria Vung Tau, chuong trinh dao
     tao Ba Ria Vung Tau, bang cap Ba Ria Vung Tau, dao tao online Ba Ria Vung
-    Tau"
+    Tau,gddp-brvt,gddpbrvt,gddp/brvt"
     />
     <meta
       property="twitter:image"
@@ -111,11 +111,14 @@
     <meta property="og:url" content="https://www.gddp-brvt.site/" />
     <meta name="geo.region" content="VN-SG" />
     <meta name="geo.placename" content="Sài Gòn, Việt Nam" />
+    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="noindex, nofollow" />
+
     <title>Giáo Dục Địa Phương</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" ></div>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -127,4 +130,23 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    let lastRefreshTime = 0;
+    console.log("%cDừng lại!", "color: red; font-weight:bold; font-size: 50px"); // In ra "Dừng lại!" với màu xanh
+    console.log(
+      '%cĐây là một tính năng của trình duyệt dành cho các nhà phát triển. Nếu ai đó bảo bạn sao chép-dán nội dung nào đó vào đây để bật một tính năng của trang web này hoặc "hack" dữ liệu của website, thì đó là hành vi lừa đảo và sẽ khiến họ có thể truy cập vào cookies trình duyệt từ đó lấy cắp thông tin của bạn đó!',
+      "color:white;font-size:20px;line-height:30px"
+    );
+    // Sử dụng sự kiện 'keydown' để bắt phím F5 (mã 116) và Ctrl+R (mã 82)
+    document.addEventListener("keydown", function (event) {
+      if (event.keyCode === 116 || (event.ctrlKey && event.keyCode === 82)) {
+        const currentTime = new Date().getTime();
+        if (currentTime - lastRefreshTime < 1) {
+          event.preventDefault(); // Ngăn chặn tải lại trang
+          alert("Xin lỗi, bạn không thể tải lại trang liên tục."); // Hiển thị thông báo
+        }
+        lastRefreshTime = currentTime;
+      }
+    });
+  </script>
 </html>

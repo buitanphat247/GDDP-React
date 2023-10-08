@@ -56,6 +56,8 @@ const PostRecomend = ({ title }) => {
                         <Skeleton variant="rounded" height={20} />
                         <Skeleton variant="rounded" height={20} />
                         <Skeleton variant="rounded" height={20} />
+                        <Skeleton variant="rounded" height={20} />
+                        <Skeleton variant="rounded" height={20} />
                       </Stack>
                     </div>
                   </SwiperSlide>

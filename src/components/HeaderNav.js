@@ -47,15 +47,7 @@ const HeaderNav = () => {
     localStorage.setItem("dark", !isDarkMode);
     dispatch(setIsDarkMode(!isDarkMode));
   };
-  useEffect(() => {
-    if (isDarkMode === true) {
-      const htmlElement = document.querySelector("html");
-      htmlElement.setAttribute("class", "dark");
-    } else {
-      const htmlElement = document.querySelector("html");
-      htmlElement.removeAttribute("class", "dark");
-    }
-  }, [isDarkMode]);
+  
   return (
     <div className="dark:bg-slate-800 sm:w-full xl:px-5 sm:px-2 sm:gap-x-2 flex justify-between py-3 sticky top-0 z-50 shadow-md shadow-slate-400  mb-5 bg-slate-300 group">
       <div className="w-full relative">
@@ -67,7 +59,7 @@ const HeaderNav = () => {
           className="w-full h-[50px] bg-[#e4e6eb] sm:text-sm
                 placeholder:text-black outline-none border-2 border-transparent focus:border-blue-500  rounded-md px-5 dark:focus:shadow-slate-600 focus:shadow-black transition-all shadow-lg"
         />
-        <div className="absolute w-[100%] round h-auto top-[100%] rounded-xl select-none cursor-pointer rounded-b-md overflow-hidden">
+        <div className="absolute w-[100%] round  top-[100%] rounded-xl select-none cursor-pointer rounded-b-md ">
           {dataSearch.length > 0 &&
             dataSearch.map((item, index) => {
               return (

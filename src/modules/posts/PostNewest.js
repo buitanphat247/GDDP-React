@@ -38,7 +38,7 @@ const PostNewest = ({ title }) => {
               slidesPerView: 2,
               spaceBetween: 10,
             },
-           
+
             1024: {
               slidesPerView: 4,
               spaceBetween: 10,
@@ -54,6 +54,8 @@ const PostNewest = ({ title }) => {
                     <div>
                       <Stack spacing={1}>
                         <Skeleton variant="rounded" height={300} />
+                        <Skeleton variant="rounded" height={20} />
+                        <Skeleton variant="rounded" height={20} />
                         <Skeleton variant="rounded" height={20} />
                         <Skeleton variant="rounded" height={20} />
                         <Skeleton variant="rounded" height={20} />

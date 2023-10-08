@@ -11,7 +11,7 @@ const Home = () => {
     <div className={` border-black dark:bg-slate-500 transition-all`}>
       <HeaderNav></HeaderNav>
       <SlideAlbum></SlideAlbum>
-      <PostFearture title={"bài viết nổi bậc"}></PostFearture>
+      <PostFearture title={"bài viết nổi bật"}></PostFearture>
       <PostNewest title={"bài viết mới nhất"}></PostNewest>
       <PostRecomend title={"bài viết đề xuất"}></PostRecomend>
     </div>
