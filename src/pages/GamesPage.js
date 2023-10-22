@@ -133,7 +133,7 @@ const GamesPage = () => {
             key={index}
             className="bg-slate-300 p-2 rounded-md grid gap-y-2 xl:relative group overflow-hidden cursor-pointer"
           >
-            <div className="w-full sm:h-[250px] md:h-[350px] rounded-md overflow-hidden">
+            <div className="w-full sm:h-[250px] md:h-[350px] xl:h-[250px] rounded-md overflow-hidden">
               <img
                 className="w-full block h-full object-cover"
                 src={item.link_image}
@@ -144,9 +144,7 @@ const GamesPage = () => {
               isNavLink={true}
               url={item.url}
               target="_blank"
-              className="bg-blue-400 flex items-center justify-center text-2xl font-bold uppercase text-white w-full h-[50px] xl:rounded-b-md xl:absolute transition-all xl:bottom-0 xl:group-hover:translate-y-[-0%] xl:translate-y-[300%]
-              sm:rounded-md
-              "
+              className="bg-blue-400 flex items-center justify-center text-2xl font-bold uppercase text-white w-full h-[50px] sm:rounded-md "
             >
               Play Game
             </Button>

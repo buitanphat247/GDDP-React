@@ -28,14 +28,14 @@ const DetailPage = () => {
     <div className="border-black dark:bg-slate-500">
       <HeaderNav></HeaderNav>
       <div className="xl:px-10 sm:px-2 py-10 grid gap-y-5 bg-slate-300  xl:mx-10 mb-10 rounded-md ">
-        <div className="relative xl:h-[450px] sm:h-[250px] xl:w-[70%] sm:w-[100%] mx-auto block">
+        <div className="relative lg:h-[350px] xl:h-[450px] sm:h-[250px] xl:w-[70%] sm:w-[100%] mx-auto block">
           <img
             className="rounded-md w-full h-full object-cover block"
             src={data?.link_image}
             alt=""
           />
           <div className="absolute top-0 w-full h-full right-0 left-0 bg-black rounded-md opacity-50"></div>
-          <h1 className="absolute text-white uppercase top-1/2 left-1/2 transform -translate-x-1/2 sm:text-xl -translate-y-1/2 xl:px-10 xl:text-5xl xl:leading-relaxed col-span-2 font-bold text-center xl:w-[90%] sm:w-[100%] line-clamp-4">
+          <h1 className="absolute text-white uppercase top-1/2 left-1/2 transform -translate-x-1/2 sm:text-xl -translate-y-1/2 xl:px-10 xl:text-3xl xl:leading-relaxed col-span-2 font-bold text-center xl:w-[90%] sm:w-[100%] lg:text-3xl line-clamp-4">
             {data?.title}
           </h1>
           <ActionsDetails></ActionsDetails>

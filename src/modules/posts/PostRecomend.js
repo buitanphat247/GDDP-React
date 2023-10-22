@@ -24,7 +24,7 @@ const PostRecomend = ({ title }) => {
         <Swiper
           centeredSlides={false}
           autoplay={{
-            delay: 2500,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           className="mySwiper"
